@@ -10,6 +10,10 @@ class BooksController < ApplicationController
     respond_with @book
   end
 
+  def create
+    respond_with Book.create(book_params)
+  end
+
   def update
     respond_with @book.update(book_params)
   end
@@ -20,7 +24,7 @@ class BooksController < ApplicationController
 
   private
     def set_book
-      @book = Book.find(book_params)
+      @book = Book.find(params[:id])
     end
 
     def book_params
