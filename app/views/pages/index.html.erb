@@ -1,1 +1,25 @@
+<h1>Quite Possibly the Best Book App Ever</h1>
 
+<div ng-controller="BooksCtrl">
+
+	<form ng-submit="addBook()">
+		<input type="text" ng-model="newBook.title" placeholder="Title"></br>
+		<input type="text" ng-model="newBook.author" placeholder="Author"></br>
+		<input type="text" ng-model="newBook.description" placeholder="Description"></br>
+		<button>Add Book</button>
+	</form>
+
+		<!-- this is where you should put your edit form -->
+		<!-- need true, false variable will toggle the show when button is clicked -->
+		<ul ng-repeat="book in books">
+	      <form ng-show="editing" ng-submit="editing = false">
+	        <input type="text" ng-model="book.title">
+	        <input type="text" ng-model="book.author">
+	        <input type="text" ng-model="book.description">
+	        <input type="text" ng-model="book.isbn" placeholder="ISBN">
+	        <button ng-click="editBook()">Save Changes</button>
+	      </form>
+			<li>{{book.title}}, by: {{book.author}} <button ng-click="deleteBook()">Delete</button><span ng-hide="editing" ng-click="editing = true"><button>Edit</button></span>
+			</li>
+		</ul>
+</div>
